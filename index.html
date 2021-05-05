@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"
+        integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ=="
+        crossorigin="anonymous"></script>
+<script>
+
+    let socket = io("localhost:3000");
+    socket.on("posts", (s) => alert(s))
+    socket.emit("posts", {name: 4555})
+
+
+    function nameAlert(a) {
+        socket.emit("posts", a)
+    }
+
+</script>
+<body>
+
+<input type="text" id="isim">
+<button onclick="nameAlert(isim.value)">isim al</button>
+</body>
+</html>
