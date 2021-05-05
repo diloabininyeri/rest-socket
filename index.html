@@ -10,7 +10,7 @@
         crossorigin="anonymous"></script>
 <script>
 
-    let socket = io("localhost:3000");
+    let socket = io("172.16.45.131:3000");
     socket.on("posts", (s) => alert(s))
     socket.emit("posts", {name: 4555})
 
