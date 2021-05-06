@@ -8,23 +8,12 @@ const options = {
 };
 
 global.io = require('socket.io')(server, options);
-const listener = require('./functions/listener')
-const posthandler = require('./functions/posthandle')
-
-app.use((req, res, next) => {
-    req.io = io;
-    next();
-})
-
-app.get("/a", listener);
-app.get("/form", posthandler);
-
-
-io.on('connection', (socket) => {
-    socket.on("posts", (a) => {
-        io.emit("posts", a)
-    })
-    console.log('Connected' + socket.id);
-});
-
-
+const initial = require('./bootstrap/initial');
+const router = require('./router/router')
+const socket = require('./socket/socket');
+const tokenMiddleware = require('./middleware/token');
+initial.setBodyParser(app)
+tokenMiddleware(app)
+initial.setSocketIo(app, io)
+router(app)
+socket(io)

@@ -15,6 +15,9 @@
     socket.emit("posts", {name: 4555})
 
 
+    socket.on("connect_error",(b)=>alert(b))
+
+
     function nameAlert(a) {
         socket.emit("posts", a)
     }
