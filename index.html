@@ -10,12 +10,12 @@
         crossorigin="anonymous"></script>
 <script>
 
-    let socket = io("172.16.45.131:3000");
+    let socket = io("172.16.45.131:3000", {auth: {token: 'dopinghafiza'}});
     socket.on("posts", (s) => alert(s))
     socket.emit("posts", {name: 4555})
 
 
-    socket.on("connect_error",(b)=>alert(b))
+    socket.on("connect_error", (b) => alert(b))
 
 
     function nameAlert(a) {
