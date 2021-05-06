@@ -10,7 +10,7 @@
         crossorigin="anonymous"></script>
 <script>
 
-    let socket = io("172.16.45.131:3000", {auth: {token: 'dopinghafiza'}});
+    let socket = io("172.16.45.131:3000", {auth: {token: "$2y$10$.5iuqFaSaMQrPi/rMmUVjOJg/Ip6gEI5Jzhux.tzfyUu2ZmPOAs2C"}});
     socket.on("posts", (s) => alert(s))
     socket.emit("posts", {name: 4555})
 
