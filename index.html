@@ -8,18 +8,51 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"
         integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ=="
         crossorigin="anonymous"></script>
+
+
+<script>
+    class Socket {
+
+        ws;
+
+        constructor(uri, token) {
+            this.ws = io(uri, {auth: {token: token}});
+        }
+
+        send(channel, data) {
+            return this.ws.emit(channel, data)
+        }
+
+        income(channel, callback) {
+            this.ws.on(channel, (d) => {
+                return callback(d)
+            })
+        }
+
+        onConnectionError(callback) {
+            return this.income("connect_error", callback)
+        }
+
+        getIoInstance() {
+            return this.ws;
+        }
+    }
+</script>
 <script>
 
-    let socket = io("172.16.45.131:3000", {auth: {token: "$2y$10$.5iuqFaSaMQrPi/rMmUVjOJg/Ip6gEI5Jzhux.tzfyUu2ZmPOAs2C"}});
-    socket.on("posts", (s) => alert(s))
-    socket.emit("posts", {name: 4555})
+    const token = "$2y$10$.5iuqFaSaMQrPi/rMmUVjOJg/Ip6gEI5Jzhux.tzfyUu2ZmPOAs2C";
+    const uri = "172.16.45.131:3000"
+    socket = new Socket(uri, token);
 
 
-    socket.on("connect_error", (b) => alert(b))
+    socket.send("posts", [5, 89]);
+    socket.income("posts", function (a) {
+        alert(a)
+    })
 
-
+    socket.onConnectionError((a) => alert(a))
     function nameAlert(a) {
-        socket.emit("posts", a)
+        socket.send("posts", a)
     }
 
 </script>
