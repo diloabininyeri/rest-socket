@@ -9,56 +9,37 @@
         integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ=="
         crossorigin="anonymous"></script>
 
-
-<script>
-    class Socket {
-
-        ws;
-
-        constructor(uri, token) {
-            this.ws = io(uri, {auth: {token: token}});
-        }
-
-        send(channel, data) {
-            return this.ws.emit(channel, data)
-        }
-
-        income(channel, callback) {
-            this.ws.on(channel, (d) => {
-                return callback(d)
-            })
-        }
-
-        onConnectionError(callback) {
-            return this.income("connect_error", callback)
-        }
-
-        getIoInstance() {
-            return this.ws;
-        }
-    }
-</script>
 <script>
 
     const token = "$2y$10$.5iuqFaSaMQrPi/rMmUVjOJg/Ip6gEI5Jzhux.tzfyUu2ZmPOAs2C";
     const uri = "172.16.45.131:3000"
-    socket = new Socket(uri, token);
+
+    let socket = io(uri, {auth: {token: token}})
+
+    socket.on('connect_error',(error)=>console.error(error))
+
+    socket.on("notify", (a) => alert(JSON.stringify(a)))
 
 
-    socket.send("posts", [5, 89]);
-    socket.income("posts", function (a) {
-        alert(a)
-    })
+    function socket_emit(channel, json) {
 
-    socket.onConnectionError((a) => alert(a))
-    function nameAlert(a) {
-        socket.send("posts", a)
+        let query = new URLSearchParams(json).toString();
+        fetch(`http://172.16.45.131:3000/${channel}/?${query}&token=${token}`, {
+            method: 'POST', // or 'PUT'
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(json)
+        });
     }
+
+    socket_emit("asd",{name:999999999})
 
 </script>
 <body>
 
 <input type="text" id="isim">
-<button onclick="nameAlert(isim.value)">isim al</button>
+<button onclick="socket_emit('notify',{value:Math.random()})">isim al</button>
 </body>
 </html>
