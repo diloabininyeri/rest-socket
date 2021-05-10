@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
 const cors = require('cors');
+require('dotenv').config();
 /*const bodyParser = require('body-parser');*/
-const server = app.listen(3000)
+const server = app.listen(process.env.APP_PORT)
 
 const options = {
     cors: {
