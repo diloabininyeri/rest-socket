@@ -12,34 +12,41 @@
 <script>
 
     const token = "$2y$10$.5iuqFaSaMQrPi/rMmUVjOJg/Ip6gEI5Jzhux.tzfyUu2ZmPOAs2C";
-    const uri = "172.16.45.131:3000"
+    const uri = "172.16.45.131:3000";
 
-    let socket = io(uri, {auth: {token: token}})
+    let socket = io(uri, {auth: {token: token}});
 
-    socket.on('connect_error',(error)=>console.error(error))
+    socket.on('connect_error', (error) => console.error(error));
 
-    socket.on("notify", (a) => alert(JSON.stringify(a)))
+    socket.on("deneme", (a) => {
+        alert(a.name)
+    });
+    socket.on("asd", (a) => alert(JSON.stringify(a)));
+    socket.emit("asd", "ssssdd")
 
 
     function socket_emit(channel, json) {
-
         let query = new URLSearchParams(json).toString();
-        fetch(`http://172.16.45.131:3000/${channel}/?${query}&token=${token}`, {
-            method: 'POST', // or 'PUT'
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(json)
-        });
+        fetch(`http://172.16.45.131:3000/${channel}/?token=${token}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: query
+        }).then(a => a.json()).then(e => console.log(e));
     }
 
-    socket_emit("asd",{name:999999999})
+    socket_emit("deneme", {name: 999999999});
 
 </script>
 <body>
+<button onclick="socket_emit('deneme',{name:Math.random()})">dene</button>
+<form action="http://localhost:3000/deneme?token=$2y$10$.5iuqFaSaMQrPi/rMmUVjOJg/Ip6gEI5Jzhux.tzfyUu2ZmPOAs2C"
+      method="POST">
+    <input type="text" name="test" value="11111">
+    <input type="submit" value="gonder" name="b1">
+</form>
 
+<!--
 <input type="text" id="isim">
-<button onclick="socket_emit('notify',{value:Math.random()})">isim al</button>
+<button onclick="socket_emit('notify',{value:Math.random()})">isim al</button>-->
 </body>
 </html>
