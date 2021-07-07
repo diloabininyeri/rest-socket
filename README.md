@@ -20,7 +20,7 @@ socket.on("notify", (a) => console.log(a))
 
 ```
 
-with php example
+send data to socket with php
 ```php
 $url = "http://localhost:3000/chanelname?token=$2y$10$.5iuqFaSaMQrPi/rMmUVjOJg/Ip6gEI5Jzhux.tzfyUu2ZmPOAs2C";
 $ch = curl_init();
