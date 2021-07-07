@@ -1,6 +1,5 @@
 # rest-socket
-send to message or data with any software langauge
-rest socket.io so you can send to socket with http in any language
+send to message or data with any software langauge,no need more enviroument just use http rest api
 
 
 with js example code 
