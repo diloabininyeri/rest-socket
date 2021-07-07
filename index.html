@@ -22,7 +22,7 @@
         alert(a.name)
     });
 
-    socket.on("doping-hafiza",(a)=>alert(JSON.stringify(a)))
+    socket.on("my-channel",(a)=>alert(JSON.stringify(a)))
     socket.on("asd", (a) => alert(JSON.stringify(a)));
     socket.emit("asd", "ssssdd")
 
