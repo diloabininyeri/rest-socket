@@ -37,4 +37,27 @@ $server_output = curl_exec($ch);
 curl_close ($ch);
 
 ```
+example subscribe to socket in html via js 
 
+```
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"
+        integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ=="
+        crossorigin="anonymous"></script>
+
+<script>
+
+    const token = "$2y$10$.5iuqFaSaMQrPi/rMmUVjOJg/Ip6gEI5Jzhux.tzfyUu2ZmPOAs2C";
+    const uri = "yoursocketserver.com:3000";
+
+    let socket = io(uri, {auth: {token: token}});
+
+    socket.on('connect_error', (error) => console.error(error));
+    socket.on("my-channel",(a)=>alert(JSON.stringify(a)))
+    
+    socket_emit("my-channel",{name:"dılo"});
+    
+ 
+</script>
+
+ 
+```
