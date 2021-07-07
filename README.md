@@ -39,7 +39,7 @@ curl_close ($ch);
 ```
 example subscribe to socket in html via js 
 
-```
+```js
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"
         integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ=="
         crossorigin="anonymous"></script>
