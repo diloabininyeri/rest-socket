@@ -1,4 +1,5 @@
 # rest-socket
+send to message or data with any software langauge
 rest socket.io so you can send to socket with http in any language
 
 
@@ -39,3 +40,4 @@ $server_output = curl_exec($ch);
 curl_close ($ch);
 
 ```
+
