@@ -50,6 +50,16 @@ example subscribe to socket in html via js
     const uri = "yoursocketserver.com:3000";
 
     let socket = io(uri, {auth: {token: token}});
+    
+    function socket_emit(channel, json) {
+    let query = new URLSearchParams(json).toString();
+    fetch(`http://172.16.45.131:3000/${channel}/?token=${token}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: query
+    }).then(a => a.json()).then(e => console.log(e));
+}
+
 
     socket.on('connect_error', (error) => console.error(error));
     socket.on("my-channel",(a)=>alert(JSON.stringify(a)))
