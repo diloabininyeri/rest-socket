@@ -26,10 +26,8 @@ $url = "http://localhost:3000/chanelname?token=$2y$10$.5iuqFaSaMQrPi/rMmUVjOJg/I
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,$url);
 curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS,
-    "name=value1 dggger  gr&postvar2=value2 ggerge rgegg&postvar3=value3");
-
-// Receive server response ...
+curl_setopt($ch, CURLOPT_POSTFIELDS,"name=dılo&surname=sürücü");
+.
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $server_output = curl_exec($ch);
