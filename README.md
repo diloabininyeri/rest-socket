@@ -79,3 +79,5 @@ curl --location --request GET 'http://localhost:3000/chanel_name?token=$2y$10$/G
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'name=Dılo sürücü'
 ```
+![screenshot of postman](https://i.ibb.co/MGnzYPz/Screenshot-from-2022-03-08-14-53-41.png)
+
