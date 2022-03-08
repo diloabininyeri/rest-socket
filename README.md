@@ -71,3 +71,11 @@ example subscribe to socket in html via js
 
  
 ```
+
+Test with curl
+
+```console
+curl --location --request GET 'http://localhost:3000/deneme?token=$2y$10$/GluV3g/0wcaU5A301pd0O1EeucaOrZym2Yh9CCti6NwROwnk4vba' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'name=grgregr'
+```
