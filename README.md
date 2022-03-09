@@ -21,7 +21,7 @@ socket.on("notify", (a) => console.log(a))
 ```
 Using on laravel 
 
-```
+```php
 
 use Illuminate\Support\Facades\Http;
 
