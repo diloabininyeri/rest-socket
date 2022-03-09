@@ -19,6 +19,26 @@ socket_emit('notify', {seen: 45})
 socket.on("notify", (a) => console.log(a))
 
 ```
+Using on laravel 
+
+```
+
+use Illuminate\Support\Facades\Http;
+
+$url = 'http://localhost:3000/chanel_name?token=$2y$10$.5iuqFaSaMQrPi/rMmUVjOJg/Ip6gEI5Jzhux.tzfyUu2ZmPOAs2C';
+
+
+$payload = ['name' => 'Dılo sürücü'];
+
+$response = Http::asForm()
+    ->post(
+        $url,
+        $payload
+    );
+
+return $response->body();
+
+```
 
 send data to socket with php
 ```php
