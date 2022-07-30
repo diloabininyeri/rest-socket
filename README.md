@@ -2,7 +2,7 @@
 send to message or data with any software langauge,no need more enviroument just use http rest api
 
 
-try with docker
+get from docker hub...
 ```
 docker run --name rest-socket -p 3000:3000 diloabininyeri/rest-socket
 ```
