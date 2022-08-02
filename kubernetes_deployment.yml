@@ -1,0 +1,26 @@
+#deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-deployment
+  template:
+    metadata:
+      labels:
+        app: nodejs-deployment
+    spec:
+      containers:
+        - name: nodejs-container
+          image: diloabininyeri/rest-socket
+          ports:
+            - containerPort: 3000
+          env:
+            - name: EXAMPLE_ENV
+              value: ExAMPLE_VALUE
+          imagePullPolicy: Always
+#create service
+#kubectl expose deployment nodejs-deployment --type="LoadBalancer"          
