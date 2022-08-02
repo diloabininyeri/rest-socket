@@ -23,4 +23,5 @@ spec:
               value: ExAMPLE_VALUE
           imagePullPolicy: Always
 #create service
-#kubectl expose deployment nodejs-deployment --type="LoadBalancer"          
+#kubectl expose deployment nodejs-deployment --type="LoadBalancer"        
+#to list url of service ,minikube service --all
